@@ -246,22 +246,24 @@ User-defined variables are custom variables you add to Codefresh entities such a
 You create such variables manually or by importing predefined variables from files (see [How to](#create-user-defined-variables)). You can also create empty variables, without any values.
 
 ### Empty user-defined variables
-Codefresh allows you to add variables with just the key definitions, without values. The values are automatically populated during pipeline execution or defined manually.
-You can add empty variables to:
+Codefresh allows you to add variables with just the key definitions, without values. The values are automatically populated during pipeline execution or defined manually.  
+
+You can add empty variables to the following entities by either manually entering them, pasting as text, or importing files:
 * Projects
 * Pipelines
 * Build triggers
+
 
 >**NOTE**  
 Encryption is not supported for empty variables.
 
 
 ### Import user-defined variables in bulk
-Add custom variables in bulk by pasting them into the text editor or by importing them from a file.  
+Add custom variables in bulk by pasting as text or by importing them from a file.  
 
 * Import from text  
   This is a quick option to add variables defined locally or in specific environments to a pipeline. 
-  You simply copy the set of variables and paste them into the text editor.
+  You simply copy the set of variables and paste them as text in the text editor.
 
 * Import from file  
   Importing from a file is useful when you have a file containing the predefined variables.
