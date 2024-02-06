@@ -271,9 +271,6 @@ There are several scenarios where empty variables can be useful. Let's explore a
   Define a condition to run a series of steps depending on whether the variable has a value or is empty. For example, skip tests if empty and run tests if otherwise. 
 
 
->**NOTE**  
-Encryption is not supported for empty variables.
-
 
 ### Bulk-import for user-defined variables
 Add custom variables in bulk by pasting from text or by importing them from a file.  
@@ -380,7 +377,7 @@ You can create user-defined variables for projects, pipelines, build runs, and s
 
 
 #### Step 2: Add variables
-Add variables, by defining them manually as key-value pairs, copying them as text, or importing them from files. 
+Add variables by defining them manually as key-value pairs, copying them as text, or importing them from files. 
 
 * Empty variables  
   When adding variables, manually or through import, you can add/include empty variables by only adding the key for the variable without a value, to be dynamically or manually populated. 
@@ -689,7 +686,7 @@ max-width="50%"
 %}
 -->
 
-## Escape special characters in variables
+## Escaping special characters in variables
 When passing special characters through environment variables, use `\` as an escape character.  
 For example, to pass a Cassandra connection string, you might do something like `Points\=hostname\;Port\=16376\;Username\=user\;Password\=password`. 
 
