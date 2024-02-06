@@ -254,25 +254,56 @@ You can add empty variables to the following entities by either manually enterin
 * Build triggers
 
 
+There are several scenarios where empty variables can be useful. Let's explore a few common ones:
+
+* Placeholders for user-defined values  
+  Create a step that checks for empty variables, and prompts the user to enter a value. 
+
+* Dynamic population during pipeline execution  
+  Populate values on-the-fly during pipeline execution.
+
+* Custom values for build runs  
+  Allow users to tailor their build runs with the exact values they need.  
+  Add an empty variable as a placeholder for environments without tying it to a specific setting, allowing users to define the values as needed.
+
+* Conditional step executions  
+  Use empty variables to conditionally execute or skip specific steps in your pipeline.  
+  Define a condition to run a series of steps depending on whether the variable has a value or is empty. For example, skip tests if empty and run tests if otherwise. 
+
+
 >**NOTE**  
 Encryption is not supported for empty variables.
 
 
-### Import user-defined variables in bulk
-Add custom variables in bulk by pasting as text or by importing them from a file.  
+### Bulk-import for user-defined variables
+Add custom variables in bulk by pasting from text or by importing them from a file.  
 
-* Import from text  
+* Import as text  
   This is a quick option to add variables defined locally or in specific environments to a pipeline. 
-  You simply copy the set of variables and paste them as text in the text editor.
+  You simply copy the set of variables and paste them in the text editor.
 
 * Import from file  
   Importing from a file is useful when you have a file containing the predefined variables.
 
 
-### Priority for user-defined variable overrides
-In Codefresh, becuase you can add user-defined variables to different entities, variable definitions are available at levels. 
+>**NOTE**  
+When importing variables into an entity that already contains variables with the same names, the import action will override the existing values, unless the values are encrypted. Encrypted variables retain the values until you explicitly reset the value.
 
-If the variable with the same name is defined at multiple levels, the override rules are based on the priority of the variable.  
+    {% include 
+        image.html 
+        lightbox="true" 
+        file="/images/pipeline/variables/reset-encrypted-variable.png" 
+        url="/images/pipeline/variables/reset-encrypted-variable.png"
+        alt="Reset an encrypted variable" 
+        caption="Reset an encrypted variable"
+        max-width="60%"
+        %}
+
+
+### Priority for user-defined variable overrides
+In Codefresh, variable definitions can exist at levels as you can add user-defined variables to multiple entities. 
+
+If the variable with the same name is defined at multiple levels, the override rules are based on the priority-level of the variable.  
 Variables at levels with higher priority override those at levels with lower priority.  
 For example if a pipeline variable is defined both within a project, and as an execution parameter of a specific build, the final result will be the value of the variable defined as a build parameter. The project-level variable is ignored.
 
@@ -293,7 +324,7 @@ Listed below are the different levels for user-defined variables in order of pri
 1. [Shared-configurations]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)
 1. Projects
 
-The variables are injected into pipelines from different sources and at different levels. To view the variables actually used by a specific build of the pipeline, see [Viewing variables in pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-variables-in-pipeline-builds).
+The variables can be injected into pipelines from different sources and at different levels. To view the variables actually used by a specific build of the pipeline, see [Viewing variables in pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-variables-in-pipeline-builds).
 
 ### Create user-defined variables
 Create user-defined variables by selecting the target entity and then adding the variables.
@@ -349,10 +380,21 @@ You can create user-defined variables for projects, pipelines, build runs, and s
 
 
 #### Step 2: Add variables
-Add variables manually by defining them as key-value pairs, or by importing them from files. 
+Add variables, by defining them manually as key-value pairs, copying them as text, or importing them from files. 
 
-When adding variables, manually or through import, you can add/include empty variables, that is add only the key for the variable and leave the value empty to be dynamically or manually populated. 
-Apart from empty variables, you can also encrypt sensitive variables for reasons of security.
+* Empty variables  
+  When adding variables, manually or through import, you can add/include empty variables by only adding the key for the variable without a value, to be dynamically or manually populated. 
+
+* Encrypting variables
+  You can encrypt manually-defined variables when you add them.  
+  Imported variables can be encrypted _after_ import.
+  
+  >**NOTE**  
+  Decrypting an encrypted variable permanently deletes the encrypted value, and it cannot be restored.
+  If the value is important, make sure to first copy it to a safe location before decrypting it. 
+
+
+##### How to
 
 1. To manually add variables, click **Add Variable**. 
   * To add the variable with its default value, enter the key-value pair.  
@@ -370,18 +412,28 @@ max-width="60%"
 
 
 {:start="2"}
-1. (Applies only to projects and pipelines) To import by copy and paste, click **Import from Text**.
+1. (Applies only to projects and pipelines) To import by copy and paste:
   * Copy the set of variables to add.
+  * Click the **Settings** icon and then select **Import from Text**.
   * Paste into the text editor.
-  * Click **Import**
+  * Click **Import**.
 
-
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/variables/import-from-text.png" 
+url="/images/pipeline/variables/import-from-text.png"
+alt="Example of variables copied from text" 
+caption="Example of variables copied from text"
+max-width="60%"
+%}
 
 {:start="3"}
 1. (Applies only to projects and pipelines) To import them from a file, click **Import from File**.
   * Browse to the file to import, and then click **Import**.
 1. Click **Save**. 
 1. To encrypt the variables (not supported for empty variables), click {::nomarkdown}<img src="../../../images/icons/encrypt.png"  display=inline-block> <b>Encrypt</b>{:/}, and confirm. 
+
 
 
 
@@ -546,7 +598,7 @@ Use this technique if you have complex expressions that have issues with the `cf
 
 Use the `CF_OUTPUT_URL` variable to export any external in the form of a URL. 
 
-This variable can be useful to output the URL of the parent pipeline, and navigate from the child to the parent build.  Remember that Codefresh has native support to trigger child builds from parent builds, and to navigate from the parent to the child build through the `codefresh-run` plugin ([link](https://codefresh.io/steps/step/codefresh-run)).  
+This variable is useful to output the URL of the parent pipeline, and navigate from the child to the parent build.  Remember that Codefresh has native support to trigger child builds from parent builds, and to navigate from the parent to the child build through the `codefresh-run` plugin ([link](https://codefresh.io/steps/step/codefresh-run)).  
 
 ##### Add `CF_OUTPUT_URL` with `cf_export`
 Simply add a step to the child build with an in-step link to the parent build. The URL link to the parent build is displayed as part of the step details in the Builds page.  
