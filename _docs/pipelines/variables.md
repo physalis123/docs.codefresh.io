@@ -254,13 +254,7 @@ You can add empty variables to the following entities by either manually enterin
 * Build triggers
 
 
-There are several scenarios where empty variables can be useful. Let's explore a few common ones:
-
-* Placeholders for user-defined values  
-  Create a step that checks for empty variables, and prompts the user to enter a value. 
-
-* Dynamic population during pipeline execution  
-  Populate values on-the-fly during pipeline execution.
+There are several scenarios where empty variables can be useful. Here are a couple of common ones:
 
 * Custom values for build runs  
   Allow users to tailor their build runs with the exact values they need.  
@@ -283,8 +277,10 @@ Add custom variables in bulk by pasting from text or by importing them from a fi
   Importing from a file is useful when you have a file containing the predefined variables.
 
 
->**NOTE**  
-When importing variables into an entity that already contains variables with the same names, the import action will override the existing values, unless the values are encrypted. Encrypted variables retain the values until you explicitly reset the value.
+* Import from [shared configurations]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/#using-shared-environment-variables)
+
+  >**NOTE**  
+  When importing variables into an entity that already contains variables with the same names, the import action will override the existing values, unless the values are encrypted. Encrypted variables retain the values until you explicitly reset the value.
 
     {% include 
         image.html 
@@ -295,8 +291,8 @@ When importing variables into an entity that already contains variables with the
         caption="Reset an encrypted variable"
         max-width="60%"
         %}
-
-
+  
+  
 ### Priority for user-defined variable overrides
 In Codefresh, variable definitions can exist at levels as you can add user-defined variables to multiple entities. 
 
