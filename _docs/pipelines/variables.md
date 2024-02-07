@@ -278,6 +278,7 @@ Add custom variables in bulk by pasting from text or by importing them from a fi
 
 
 * Import from [shared configurations]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/#using-shared-environment-variables)
+  Import environment variables defined at the account-level.
 
   >**NOTE**  
   When importing variables into an entity that already contains variables with the same names, the import action will override the existing values, unless the values are encrypted. Encrypted variables retain the values until you explicitly reset the value.
