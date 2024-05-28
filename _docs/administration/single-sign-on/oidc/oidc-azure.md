@@ -172,7 +172,9 @@ max-width="70%"
   * **Client Secret**: The key value you copied when you created the client secret in Azure.
   * **Tenant**: `mycompany.onmicrosoft.com` or the ID of `0example1-0000-0aa0-a00a-1example0`
   * **Object ID**: The Object ID from your Enterprise Application Properties in Azure AD.
-  * **Auto Sync users and teams to Codefresh**: Select to automatically sync user accounts in Azure AD to your Codefresh account. Optionally, define the time interval, in hours, at which to sync, from 1 to 24. If you don’t specify an interval, the sync is every 12 hours.
+  * **Auto Sync users and teams to Codefresh**: Select to automatically sync user accounts in Azure AD to your Codefresh account.  
+    * To define a custom sync interval, select **Hours** (1 to 23) or **Minutes** (5 to 59), and then define the time interval. 
+    * To use the default sync interval of every 12 hours, leave the sync interval empty.
 
 
   {% include image.html

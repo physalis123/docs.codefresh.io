@@ -54,11 +54,18 @@ The table lists the SSO providers supported in Codefresh and the team-sync optio
 ### Automated team-sync in Codefresh UI
 
 The automated team-sync option is only available in the Codefresh UI.  
-This is the general workflow for automated team-sync in Codefresh:
 
+**Custom or default sync interval**
+Define the sync frequency 
+
+
+This is the general workflow for automated team-sync in Codefresh:
 1. Codefresh syncs users and groups through the SSO API, and grants SSO permissions for each invited user during sync.
 1. You set up the SSO provider in Codefresh, and select one or both options for automated team-sync:
-    * If only the **Auto-sync users and teams** option is selected, Codefresh automatically triggers a sync at the interval defined. On first-time sign-in, the invited user needs to enter additional information such as First Name, Last Name, Country.
+    * If only the **Auto-sync users and teams** option is selected, Codefresh automatically triggers a sync at the interval defined. 
+      The sync interval can be a custom interval in hours in hours (1 to 23), or in minutes (5 to 59).  
+      Alternatively, you can enable **Auto-sync** without defining a sync interval, in which case, Codefresh defaults to 12-hour syncs.  
+      On first-time sign-in, the invited user needs to enter additional information such as First Name, Last Name, Country.
     * If the **Activate user** option is also selected (when available), on first-time sign-in, the invited user is automatically authenticated without having to enter additional information.  
 
 

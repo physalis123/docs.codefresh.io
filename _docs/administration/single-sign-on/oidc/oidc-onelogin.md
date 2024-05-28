@@ -92,7 +92,10 @@ Configure the application in the OneLogin dashboard.
   * **Client Secret**: The Client Secret you copied from OneLogin.
   * **Domain**: Optional. The domain to be used for authentication, only for users who must connect via a custom domain.
   * **API CLIENT ID** and **API CLIENT SECRET**: Relevant only if **Auto Sync users and teams to Codefresh** is selected. For details, see the [official documentation](https://developers.onelogin.com/api-docs/1/getting-started/working-with-api-credentials){:target="\_blank"}.
-  * **Auto Sync users and teams to Codefresh**: Select to automatically sync user accounts in Azure AD to your Codefresh account. Optionally, define the time interval, in hours, at which to sync, from 1 to 24. If you don’t specify an interval, the sync is every 12 hours.
+  * **Auto Sync users and teams to Codefresh**: Select to automatically sync user accounts in Azure AD to your Codefresh account.  
+      * To define a custom sync interval, select **Hours** (1 to 23) or **Minutes** (5 to 59), and then define the time interval. 
+      * To use the default sync interval of every 12 hours, leave the sync interval empty.
+
 
 {:start="5"}
 1. Select **+ Add**. Codefresh generates the client name.  Note this down.
